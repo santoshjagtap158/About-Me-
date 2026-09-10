@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome</title>
+    <title>Grid Gallery</title>
+
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .box {
+            background-color: lightblue;
+            padding: 40px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1 id="message"></h1>
+    <h1>My Gallery</h1>
 
-    <script>
-        let name = prompt("Enter your name");
+    <div class="gallery">
 
-        document.getElementById("message").innerHTML =
-            "Welcome, " + name + "!";
-    </script>
+        <div class="box">Photo 1</div>
+        <div class="box">Photo 2</div>
+        <div class="box">Photo 3</div>
+        <div class="box">Photo 4</div>
+        <div class="box">Photo 5</div>
+        <div class="box">Photo 6</div>
+
+    </div>
 
 </body>
 </html>
