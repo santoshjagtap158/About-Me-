@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 1 - Interactive Buttons</title>
+  <style>
+    #text {
+      font-size: 20px;
+      font-family: Arial;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="text">Hello World</h2>
+
+  <!-- Color Buttons -->
+  <button onclick="changeColor('red')">Red</button>
+  <button onclick="changeColor('green')">Green</button>
+  <button onclick="changeColor('blue')">Blue</button>
+  <br><br>
+
+  <!-- Font Family Dropdown -->
+  <select onchange="changeFont(this.value)">
+    <option value="Arial">Arial</option>
+    <option value="Courier New">Courier</option>
+    <option value="Times New Roman">Times New Roman</option>
+  </select>
+  <br><br>
+
+  <!-- Font Size Buttons -->
+  <button onclick="changeSize('+')">A+</button>
+  <button onclick="changeSize('-')">A-</button>
+  <br><br>
+
+  <script>
+    const text = document.getElementById("text");
+
+    // Change color
+    function changeColor(color) {
+      text.style.color = color;
+    }
+
+    // Change font family
+    function changeFont(font) {
+      text.style.fontFamily = font;
+    }
+
+    // Change font size
+    function changeSize(action) {
+      let size = parseInt(window.getComputedStyle(text).fontSize);
+      if(action === '+') size += 2;
+      else size -= 2;
+      text.style.fontSize = size + "px";
+    }
+
+    // Mouseover effect
+    text.addEventListener("mouseover", () => {
+      text.style.fontWeight = "bold";
+      text.style.fontStyle = "italic";
+      text.style.textDecoration = "underline";
+    });
+
+    text.addEventListener("mouseout", () => {
+      text.style.fontWeight = "";
+      text.style.fontStyle = "";
+      text.style.textDecoration = "";
+    });
+  </script>
+</body>
+</html>

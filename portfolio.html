@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <style>
+    /* ====== Global Styles ====== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    header, section, footer {
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: blue;
+    }
+    nav a:hover {
+      color: darkred;
+    }
+
+    /* ====== About Section ====== */
+    #about img {
+      width: 150px;
+      border-radius: 50%;
+    }
+
+    /* ====== Skills Section ====== */
+    #skills ul {
+      list-style: none;
+      padding: 0;
+    }
+    #skills li {
+      background: lightgray;
+      margin: 5px;
+      padding: 10px;
+      display: inline-block;
+    }
+
+    /* ====== Projects Section ====== */
+    #projects .card {
+      display: inline-block;
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      transition: transform 0.3s;
+    }
+    #projects .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* ====== Contact Section ====== */
+    form input, form textarea {
+      width: 80%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+    form button {
+      padding: 10px 20px;
+      background: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: darkblue;
+    }
+
+    /* ====== Responsive Design ====== */
+    @media (max-width: 600px) {
+      nav a { display: block; margin: 5px 0; }
+      #projects .card { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== Header ====== -->
+  <header>
+    <h1>My Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ====== About Section ====== -->
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="https://via.placeholder.com/150" alt="My Photo">
+    <p>Hello! I am Santosh, learning MERN stack development.</p>
+  </section>
+
+  <!-- ====== Skills Section ====== -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Python</li>
+    </ul>
+  </section>
+
+  <!-- ====== Projects Section ====== -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="card">Project 1</div>
+    <div class="card">Project 2</div>
+    <div class="card">Project 3</div>
+  </section>
+
+  <!-- ====== Contact Section ====== -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name"><br>
+      <input type="email" id="email" placeholder="Your Email"><br>
+      <textarea id="message" placeholder="Your Message"></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <p>© 2026 Santosh | All Rights Reserved</p>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  </footer>
+
+  <!-- ====== JavaScript ====== -->
+  <script>
+    // Smooth scroll navigation
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))
+                .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Contact form validation + alert
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const msg = document.getElementById("message").value.trim();
+
+      if(name === "" || email === "" || msg === "") {
+        alert("⚠️ Please fill all fields!");
+      } else {
+        alert("✅ Thank you " + name + "! Your message has been sent.");
+      }
+    });
+
+    // Theme toggle (Light/Dark)
+    function toggleTheme() {
+      if(document.body.style.backgroundColor === "black") {
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+      } else {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+      }
+    }
+  </script>
+</body>
+</html>
